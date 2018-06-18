@@ -1,17 +1,30 @@
 package com.konusarakogren.twitterclone.activity.profile;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.konusarakogren.twitterclone.R;
 import com.konusarakogren.twitterclone.activity.base.BaseActivity;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class ProfileActivity extends BaseActivity {
 
     private final String TAG = "ProfileActivity";
+    TextView userName;
+    EditText password;
+    Button button_save;
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_login;
+        return R.layout.activity_profile;
     }
 
     @Override
@@ -21,6 +34,38 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        userName= findViewById(R.id.profile_text_username);
+        password=findViewById(R.id.profile_edittext_pass);
+        button_save=findViewById(R.id.profile_button_save);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+            query.getInBackground(currentUser.getObjectId().toString(), new GetCallback<ParseObject>() {
+                public void done(ParseObject object, ParseException e) {
+                    if (e == null) {
+                      userName.setText(object.getString("username"));
+                    } else {
+                        // something went wrong
+                    }
+                }
+            });
+
+
+
+        } else {
+            // show the signup or login screen
+        }
+
+
+
+        button_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ProfileActivity.this, "Hello "+ userName.getText().toString() +"!\nPass:" + password.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
