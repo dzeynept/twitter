@@ -16,9 +16,9 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("YOUR_APP_ID")
-                .clientKey("YOUR_CLIENT_KEY")
-                .server("http://localhost:1337/parse/")
+                .applicationId("twitter")
+                .clientKey("twitterKey")
+                .server("http://192.168.2.246:1337/parse")
                 .build()
         );
     }

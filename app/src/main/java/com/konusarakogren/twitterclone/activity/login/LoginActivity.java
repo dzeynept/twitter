@@ -1,4 +1,4 @@
-package com.konusarakogren.twitterclone.activity.login.view;
+package com.konusarakogren.twitterclone.activity.login;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
