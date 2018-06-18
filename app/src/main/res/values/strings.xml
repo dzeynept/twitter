@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TwitterClone</string>
+    <string name="user_profile_name">Jon Snow</string>
 </resources>
