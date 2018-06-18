@@ -11,7 +11,7 @@ public class SignupActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_login;
+        return R.layout.activity_signup;
     }
 
     @Override
