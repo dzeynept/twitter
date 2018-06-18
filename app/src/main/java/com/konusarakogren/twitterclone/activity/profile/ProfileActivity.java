@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.konusarakogren.twitterclone.R;
 import com.konusarakogren.twitterclone.activity.base.BaseActivity;
+import com.parse.ParseUser;
 
 public class ProfileActivity extends BaseActivity {
 
@@ -21,6 +22,5 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-
     }
 }
