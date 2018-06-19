@@ -54,9 +54,16 @@ public class SignupActivity extends BaseActivity {
             user.setPassword(editPassword.getText().toString());
             user.setEmail(editEmail.getText().toString());
 
+
+
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
                     if (e == null) {
+
+                        ParseObject newTweet = new ParseObject("Tweets");
+                        newTweet.put("tweets", "this is a tweet");
+                        newTweet.put("userName", "name");
+                        newTweet.saveInBackground();
                         startActivity(new Intent(SignupActivity.this, TweetsActivity.class));
                         finish();
                         // Hooray! Let them use the app now.
