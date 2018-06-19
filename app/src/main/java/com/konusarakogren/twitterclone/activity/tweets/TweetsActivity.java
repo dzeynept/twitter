@@ -57,20 +57,20 @@ public class TweetsActivity extends BaseActivity implements View.OnClickListener
         user = ParseUser.getCurrentUser();
 
 
-        /*final List<String> tweetList;
-        final List<String> userNameList;
-        final List<Integer> likeCountList;
+/*
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("Tweets");
         query.getInBackground(user.getObjectId(), new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
+            public void done(List<ParseObject> object, ParseException e) {
                 if (e == null) {
-
+                    adapter = new TweetsRecyclerAdapter();
+                    tweets_rcyclerview.setAdapter(adapter);
 
                 } else {
                     // something went wrong
                 }
             }
         });*/
+
         add_tweet_btn = findViewById(R.id.add_tweet_btn);
         add_tweet_edt = findViewById(R.id.tweets_edt);
         fab = findViewById(R.id.tweets_fa_btn);
@@ -80,8 +80,7 @@ public class TweetsActivity extends BaseActivity implements View.OnClickListener
         tweets_rcyclerview.setLayoutManager(new LinearLayoutManager(this));
 
 
-        adapter = new TweetsRecyclerAdapter();
-        tweets_rcyclerview.setAdapter(adapter);
+
     }
 
 

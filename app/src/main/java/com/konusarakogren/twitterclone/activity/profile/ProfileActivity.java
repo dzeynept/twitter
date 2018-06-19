@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.konusarakogren.twitterclone.R;
 import com.konusarakogren.twitterclone.activity.base.BaseActivity;
-import com.konusarakogren.twitterclone.activity.login.LoginActivity;
 import com.konusarakogren.twitterclone.activity.tweets.TweetsActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -61,12 +60,6 @@ public class ProfileActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
 
 
     @Override
