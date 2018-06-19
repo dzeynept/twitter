@@ -14,6 +14,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 public class ProfileActivity extends BaseActivity {
 
@@ -34,37 +35,28 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        userName= findViewById(R.id.profile_text_username);
-        password=findViewById(R.id.profile_edittext_pass);
-        button_save=findViewById(R.id.profile_button_save);
+        userName = findViewById(R.id.profile_text_username);
+        password = findViewById(R.id.profile_edittext_pass);
+        button_save = findViewById(R.id.profile_button_save);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        final ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            // do stuff with the user
-
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-            query.getInBackground(currentUser.getObjectId().toString(), new GetCallback<ParseObject>() {
-                public void done(ParseObject object, ParseException e) {
-                    if (e == null) {
-                      userName.setText(object.getString("username"));
-                    } else {
-                        // something went wrong
-                    }
-                }
-            });
-
-
-
+            userName.setText(currentUser.getUsername());
         } else {
-            // show the signup or login screen
+
         }
-
-
 
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ProfileActivity.this, "Hello "+ userName.getText().toString() +"!\nPass:" + password.getText().toString(), Toast.LENGTH_SHORT).show();
+                if(password.getText().length()<5){
+                    Toast.makeText(ProfileActivity.this, "En az 5 karakter olmalı", Toast.LENGTH_SHORT).show();
+                }else {
+                    ParseUser currentUser = ParseUser.getCurrentUser();
+                    currentUser.setPassword(password.getText().toString());
+                    currentUser.saveInBackground();
+                }
+
             }
         });
     }

@@ -31,6 +31,10 @@
             android:label="Tweets"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".activity.profile.ProfileActivity"
+            android:label="Profile"
+            android:theme="@style/AppTheme">
+        </activity>
 
     </application>
 

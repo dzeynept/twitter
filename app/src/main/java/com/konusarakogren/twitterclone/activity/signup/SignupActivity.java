@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.konusarakogren.twitterclone.R;
 import com.konusarakogren.twitterclone.activity.base.BaseActivity;
+import com.konusarakogren.twitterclone.activity.profile.ProfileActivity;
 import com.konusarakogren.twitterclone.activity.tweets.TweetsActivity;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -57,7 +58,7 @@ public class SignupActivity extends BaseActivity {
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
                     if (e == null) {
-                        startActivity(new Intent(SignupActivity.this, TweetsActivity.class));
+                        startActivity(new Intent(SignupActivity.this, ProfileActivity.class));
                         finish();
                         // Hooray! Let them use the app now.
                     } else {
