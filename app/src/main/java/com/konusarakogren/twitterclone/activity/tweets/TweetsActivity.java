@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.konusarakogren.twitterclone.R;
 import com.konusarakogren.twitterclone.activity.base.BaseActivity;
 import com.konusarakogren.twitterclone.activity.login.LoginActivity;
+import com.konusarakogren.twitterclone.activity.profile.ProfileActivity;
 import com.parse.ParseUser;
 
 public class TweetsActivity extends BaseActivity {
@@ -34,6 +35,13 @@ public class TweetsActivity extends BaseActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.settings, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(TweetsActivity.this, ProfileActivity.class));
+        finish();
     }
 
     @Override
